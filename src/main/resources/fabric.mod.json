@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "cursemods",
+  "version": "${version}",
+  "name": "Cursemods",
+  "description": "CurseForge mod installer for Minecraft",
+  "authors": [
+    "Deftware"
+  ],
+  "contact": {
+    "website": "https://deftware.me/",
+    "repo": "https://gitlab.com/deftware/cursemods"
+  },
+  "entrypoints": {
+    "client": [
+      "me.deftware.cursemods.Main"
+    ]
+  },
+  "license": "MIT",
+  "environment": "client",
+  "mixins": [
+    "cursemods.mixins.json"
+  ]
+}
