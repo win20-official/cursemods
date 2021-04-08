@@ -3,6 +3,10 @@
 A one click installer for any CurseForge mod. It automatically manages installing a mod and any of its dependencies, 
 as well as checking for game version & mod loader compatibility.
 
+## Usage
+
+To open the UI press the `O` key in-game. This keybind can be changed in the Minecraft keybinding settings.
+
 ## Features
 
 * Automatic dependency management

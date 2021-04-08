@@ -18,7 +18,8 @@
   },
   "license": "MIT",
   "environment": "client",
-  "mixins": [
-    "cursemods.mixins.json"
-  ]
+  "depends": {
+    "fabric-key-binding-api-v1": "*",
+    "fabric-lifecycle-events-v1": "*"
+  }
 }
