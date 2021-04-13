@@ -62,16 +62,24 @@ public class GuiModList extends Screen {
         this.children.add(this.searchBox);
         this.searchBox.setChangedListener(text -> {
             if (!text.isEmpty()) {
-                this.lastSearch = System.currentTimeMillis();
+                if (!searching) {
+                    this.lastSearch = System.currentTimeMillis();
+                    this.listWidget.setFilter(text.toLowerCase());
+                    this.listWidget.update();
+                    // Search api
+                    runnable = () -> {
+                        String searchQuery = this.searchBox.getText();
+                        if (!searchQuery.isEmpty()) {
+                            this.searching = true;
+                            this.api.loadSearchQuery(searchQuery);
+                            this.listWidget.update();
+                            this.searching = false;
+                        }
+                    };
+                }
+            } else {
                 this.listWidget.setFilter(text.toLowerCase());
                 this.listWidget.update();
-                // Search api
-                runnable = () -> {
-                    this.searching = true;
-                    this.api.loadSearchQuery(text);
-                    this.searching = false;
-                    this.listWidget.update();
-                };
             }
         });
         // Buttons
