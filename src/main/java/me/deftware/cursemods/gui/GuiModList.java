@@ -61,16 +61,18 @@ public class GuiModList extends Screen {
         this.children.add(this.listWidget);
         this.children.add(this.searchBox);
         this.searchBox.setChangedListener(text -> {
-            this.lastSearch = System.currentTimeMillis();
-            this.listWidget.setFilter(text.toLowerCase());
-            this.listWidget.update();
-            // Search api
-            runnable = () -> {
-                this.searching = true;
-                this.api.loadSearchQuery(text);
-                this.searching = false;
+            if (!text.isEmpty()) {
+                this.lastSearch = System.currentTimeMillis();
+                this.listWidget.setFilter(text.toLowerCase());
                 this.listWidget.update();
-            };
+                // Search api
+                runnable = () -> {
+                    this.searching = true;
+                    this.api.loadSearchQuery(text);
+                    this.searching = false;
+                    this.listWidget.update();
+                };
+            }
         });
         // Buttons
         String text = "<- Back";
